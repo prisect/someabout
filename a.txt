@@ -1,0 +1,29 @@
+/design/DAG7lIdSk6Y/Ls_wbEg03zOzJ76wc4UFGg/edit
+
+88.166.175.133
+
+:: Synchronizing package databases...
+ core                                                                                                         118.3 KiB   566 KiB/s 00:00 [####################################################################################] 100%
+ extra                                                                                                          8.1 MiB  9.72 MiB/s 00:01 [####################################################################################] 100%
+ multilib                                                                                                     127.0 KiB   794 KiB/s 00:00 [####################################################################################] 100%
+:: Searching AUR for updates...
+:: Searching databases for updates...
+ -> multimc-bin: local (1.6-3) is newer than AUR (0.7.0.4233-1)
+:: 20 packages to upgrade/install.
+20  core/device-mapper           2.03.37-1      -> 2.03.38-1
+19  core/linux                   6.17.9.arch1-1 -> 6.18.1.arch1-2
+18  core/linux-headers           6.17.9.arch1-1 -> 6.18.1.arch1-2
+17  extra/egl-wayland            4:1.1.20-1     -> 4:1.1.21-1
+16  extra/egl-x11                1.0.3-1        -> 1.0.4-1
+15  extra/libsigc++              2.12.1-1       -> 2.12.1-2
+14  extra/liburing               2.12-1         -> 2.13-1
+13  extra/libxnvctrl             580.105.08-1   -> 580.119.02-1
+12  extra/nvidia                 580.105.08-4   -> 580.119.02-2
+11  extra/nvidia-settings        580.105.08-1   -> 580.119.02-1
+10  extra/nvidia-utils           580.105.08-5   -> 580.119.02-1
+ 9  extra/sdl3_ttf               3.2.2-1        -> 3.2.2-3
+ 8  extra/uv                     0.9.17-1       -> 0.9.18-2
+ 7  extra/wine                   10.20-1        -> 10.20-2
+ 6  multilib/lib32-nvidia-utils  580.105.08-1   -> 580.119.02-1
+ 5  aur/brave-bin                1:1.85.111-1   -> 1:1.85.117-1
+ 4  aur/electron39-bin           39.2.6-1       -> 39.2.7-1
