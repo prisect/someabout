@@ -8,127 +8,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="300">
     <title>dima</title>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
         body {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0; /* Adjust margin as needed */
+            margin: 0;
             font-family: "Inconsolata", monospace;
-            font-optical-sizing: auto;
-            font-style: normal;
             color: white;
-            position: relative; /* Added */
             background-color: #1D1E22;
+            position: relative;
         }
-        h1, h2, h3, h4, nav, .section {
-            text-align: center;
-            font-weight: normal;
-        }
-        nav a {
-            display: block;
-            margin: 5px 0;
-            cursor: pointer;
-        }
-        .section {
-            display: none;
-        }
-        .section.active {
-            display: block;
-        }
-        .hidden {
-            display: none;
-        }
-        #sessionid {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px; /* Add some padding for better visibility */
-            font-size: 12px; /* Smaller font size */
-            color: #667B96; /* Changed to gray */
-        }
+
         a {
             color: #667B96;
+            text-decoration: none;
         }
+
         a:hover {
             color: #babdc4;
         }
 
-        .sub, .sub_sub {
-            vertical-align: text-bottom; /* <-- Reset the user agent stylesheet   */
-            position: relative;          /* <-- Set position to the element       */
-            bottom: 0.6em;                   /* <-- Move the <sub> element down a bit */
+        nav a {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+            text-align: center;
         }
 
-        
+        .hidden {
+            display: none;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
         .github {
             position: absolute;
             top: 0;
             left: 0;
             padding: 10px;
         }
+
+        #sessionid {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            font-size: 12px;
+            color: #667B96;
+        }
+
+        .sub {
+            position: relative;
+            bottom: 0.6em;
+            font-size: 16px;
+        }
+
+        /* unified center column */
+        .center-column {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* about content */
+        .about-content {
+            width: 100%;
+            text-align: left;
+            padding-left: 8px; /* optical centering */
+        }
+
+        .about-content h5 {
+            margin: 12px 0 6px;
+            font-weight: normal;
+            color: #babdc4;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 12px;
+        }
+
+        .about-content li::before {
+            content: "– ";
+            color: #667B96;
+        }
     </style>
 </head>
+
 <body>
-    <a class="github" href="https://github.com/dimalmfao">
-        <img src="github-mark/github-mark-white.svg" width="30" height="30"></img>
+    <a class="github" href="https://github.com/prisect">
+        <img src="github-mark/github-mark-white.svg" width="30" height="30">
     </a>
 
-    <img src="https://avatars.githubusercontent.com/u/78304878?v=4" width="100px" height="100px" style="border-radius: 50%;"></img>
+    <div class="center-column">
+        <img src="https://avatars.githubusercontent.com/u/78304878?v=4"
+             width="100" height="100" style="border-radius:50%;">
 
-    <h2>dima</h2>
-    <span class="sub" style="font-size: 16px;">online, somewhere, sometimes</span>
-    <nav>
-        <a href="https://src.eco/">the source</a>
-        <a href="https://nullcel.com/">nullcel</a>
-        <a href="pgp.txt">signature</a>
-        <a href="#about" onclick="showSection('about'); return false;">about</a>
-        <a href="#donate" onclick="showSection('donate'); return false;">donate</a>
-    </nav>
-    <div id="about" class="section">
-        <h4>about</h4>
-        <hr width="100px">
-        <p>go search on your own<br>dimka@memeware.net pgp only</p>
+        <h2>dima / prisect</h2>
+        <span class="sub">online, somewhere, sometimes</span>
+
+        <nav>
+            <a href="https://src.eco/">the source</a>
+            <a href="https://nullcel.com/">nullcel</a>
+        <a href="https://up!/">up!</a>
+            <a href="#about" onclick="showSection('about'); return false;">about</a>
+        </nav>
+
+        <!-- ABOUT SECTION -->
+        <div id="about" class="section">
+            <h4>about</h4>
+            <hr width="100">
+
+            <div class="about-content">
+                <h5>Interests</h5>
+                <ul>
+                    <li>Aviation</li>
+                    <li>Mathematics</li>
+                    <li>Deep Learning</li>
+                    <li>NLP</li>
+                    <li>Neuro-Symbolic AI</li>
+                </ul>
+
+                <h5>Games</h5>
+                <ul>
+                    <li>Steep</li>
+                    <li>Diablo IV</li>
+                    <li>MSFS 24</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div id="donate" class="section">
-        <h4>donate</h4>
-        <hr width="100px">
-        <p>well, i'm not begging</p>
-        <a href="bitcoin:bc1qjvnhgsssp2s2vvgg9wyypl3mpjwllh5zvr56e9">a</a>
-    </div>
-    
 
     <div id="sessionid"></div>
+
     <script>
         function showSection(sectionId) {
             history.pushState({ section: sectionId }, "", `#${sectionId}`);
 
-            document.querySelector('h2').classList.add('hidden'); // Changed from h3 to h
+            document.querySelector('h2').classList.add('hidden');
             document.querySelector('nav').classList.add('hidden');
-            document.querySelector('span').classList.add('hidden');
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
+            document.querySelector('.sub').classList.add('hidden');
+
+            document.querySelectorAll('.section').forEach(s =>
+                s.classList.remove('active')
+            );
+
             document.getElementById(sectionId).classList.add('active');
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-            });
-            document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
         }
 
         function showMain() {
             document.querySelector('h2').classList.remove('hidden');
             document.querySelector('nav').classList.remove('hidden');
-            document.querySelector('span').classList.remove('hidden');
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
+            document.querySelector('.sub').classList.remove('hidden');
+
+            document.querySelectorAll('.section').forEach(s =>
+                s.classList.remove('active')
+            );
+
+            history.pushState({}, "", "/");
         }
 
-        window.onpopstate = function(event) {
+        window.onpopstate = function (event) {
             if (event.state && event.state.section) {
                 showSection(event.state.section);
             } else {
@@ -136,52 +190,18 @@
             }
         };
 
-        window.onload = function() {
-            const hash = window.location.hash.substring(1);
-            if (hash) {
-                showSection(hash);
-            } else {
-                showMain();
-            }
-            const sessionID = generateSessionID();
-            document.getElementById('sessionid').textContent = sessionID;
+        window.onload = function () {
+            const hash = location.hash.replace("#", "");
+            if (hash) showSection(hash);
 
+            document.getElementById('sessionid').textContent = generateSessionID();
         };
-        function generateSessionID() {
-            const randomValue = Math.random().toString(36).substr(2, 8).toUpperCase();
-            const currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-            return randomValue + currentDate;
-        }
-        (function(e, t, n, r, i) {
-            var s = ".btc-button{display:inline-block;overflow:hidden;font-family:'Helvetica Neue',Arial,sans-serif;line-height:1.5em;padding:0 0 0 .5em;color:#FFF;border:2px solid #3b3e45;background-color:#525660;text-decoration:none}.btc-button i{position:relative;padding:0 .5em;margin-left:1em;font-style:normal;float:right;background-color:#757a8a;white-space:nowrap}.btc-button i::before{position:absolute;top:0;left:-1.5em;content:'';border-style:solid;border-width:.75em;border-color:transparent #5e626e transparent transparent}";
-            var o = document.createElement("style");
-            o.type = "text/css";
-            if (o.styleSheet) {
-              o.styleSheet.cssText = s
-            } else {
-              o.appendChild(document.createTextNode(s))
-            }
-            document.getElementsByTagName("head")[0].appendChild(o);
-            var u = function(e, t) {
-            var s = new XMLHttpRequest;
-            s.open("GET", r + t, true);
-            s.onreadystatechange = function() {
-              if (s.status != 200 || s.readyState != 4) return;
-               e.innerHTML += "<i>" + Math.round(s.responseText / 1e4) / 100 + " BTC</i>"
-            };
-            s.send();
-                e.className += " " + n;
-                e.innerHTML = i
-            };
-            for (var a = e.length - 1; a >= 0; a--) {
-            if (e[a].href.substring(0, t.length) === t) {
-             u(e[a], e[a].href.substring(t.length), i)
-            }
-        }
-  })
-  
-  (document.getElementsByTagName("a"), "bitcoin:", "btc-button", "https://blockchain.info/q/getreceivedbyaddress/", "Send");
 
+        function generateSessionID() {
+            const rand = Math.random().toString(36).substr(2, 8).toUpperCase();
+            const date = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+            return rand + date;
+        }
     </script>
 </body>
 </html>
