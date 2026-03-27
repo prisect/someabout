@@ -1,207 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="dima, the one...">
-    <meta name="keywords" content="dima, dimalmfao">
-    <meta name="author" content="@dimalmfao">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="300">
-    <title>dima</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="dima" />
+  <meta name="keywords" content="dima, prisect" />
+  <meta name="author" content="@prisect" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="300" />
+  <title>dima</title>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: "Inconsolata", monospace;
-            color: white;
-            background-color: #1D1E22;
-            position: relative;
-        }
+    :root {
+      --bg: #1D1E22;
+      --text: #fff;
+      --muted: #667B96;
+      --light: #babdc4;
+    }
 
-        a {
-            color: #667B96;
-            text-decoration: none;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        a:hover {
-            color: #babdc4;
-        }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Geist", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      position: relative;
+    }
 
-        nav a {
-            display: block;
-            margin: 5px 0;
-            cursor: pointer;
-            text-align: center;
-        }
+    a {
+      color: var(--muted);
+      text-decoration: none;
+    }
 
-        .hidden {
-            display: none;
-        }
+    a:hover {
+      color: var(--light);
+    }
 
-        .section {
-            display: none;
-        }
+    nav a {
+      display: block;
+      margin: 5px 0;
+      text-align: center;
+    }
 
-        .section.active {
-            display: block;
-        }
+    .hidden {
+      display: none;
+    }
 
-        .github {
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 10px;
-        }
+    .section {
+      display: none;
+    }
 
-        #sessionid {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
-            font-size: 12px;
-            color: #667B96;
-        }
+    .section.active {
+      display: block;
+    }
 
-        .sub {
-            position: relative;
-            bottom: 0.6em;
-            font-size: 16px;
-        }
+    .github {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
 
-        /* unified center column */
-        .center-column {
-            width: 320px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+    #sessionid {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
 
-        /* about content */
-        .about-content {
-            width: 100%;
-            text-align: left;
-            padding-left: 8px; /* optical centering */
-        }
+    .center {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-        .about-content h5 {
-            margin: 12px 0 6px;
-            font-weight: normal;
-            color: #babdc4;
-        }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
 
-        .about-content ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0 0 12px;
-        }
+    .sub {
+      font-size: 16px;
+      margin-top: -18px;
+      margin-bottom: 8px;
+    }
 
-        .about-content li::before {
-            content: "– ";
-            color: #667B96;
-        }
-    </style>
+    .about-content {
+      width: 100%;
+      text-align: left;
+      padding-left: 8px;
+    }
+
+    .about-content h5 {
+      margin: 12px 0 6px;
+      font-weight: normal;
+      color: var(--light);
+    }
+
+    .about-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+    }
+
+    .about-content li::before {
+      content: "– ";
+      color: var(--muted);
+    }
+  </style>
 </head>
 
 <body>
-    <a class="github" href="https://github.com/prisect">
-        <img src="github-mark/github-mark-white.svg" width="30" height="30">
-    </a>
+  <a class="github" href="https://github.com/prisect">
+    <img src="github-mark/github-mark-white.svg" width="30" height="30" />
+  </a>
 
-    <div class="center-column">
-        <img src="https://avatars.githubusercontent.com/u/78304878?v=4"
-             width="100" height="100" style="border-radius:50%;">
+  <div class="center">
+    <img id="avatar" class="avatar" src="https://avatars.githubusercontent.com/u/78304878?v=4" />
 
-        <h2>dima / prisect</h2>
-        <span class="sub">online, somewhere, sometimes</span>
+    <h2 id="title">dima / prisect</h2>
+    <span class="sub" id="subtitle">Locked in</span>
 
-        <nav>
-            <a href="https://src.eco/">the source</a>
-            <a href="https://nullcel.com/">nullcel</a>
-        <a href="https://up!/">up!</a>
-            <a href="#about" onclick="showSection('about'); return false;">about</a>
-        </nav>
+    <nav id="nav">
+      <a href="https://src.eco/">the source</a>
+      <a href="https://nullcel.com/">nullcel</a>
+      <a href="https://vastdisk.com/">vastdisk</a>
+      <a href="https://up!/">up!</a>
+      <a href="#about" data-section="about">about</a>
+    </nav>
 
-        <!-- ABOUT SECTION -->
-        <div id="about" class="section">
-            <h4>about</h4>
-            <hr width="100">
+    <!-- ABOUT -->
+    <div id="about" class="section">
+      <h2>about</h2>
+      <hr width="100" />
 
-            <div class="about-content">
-                <h5>Interests</h5>
-                <ul>
-                    <li>Aviation</li>
-                    <li>Mathematics</li>
-                    <li>Deep Learning</li>
-                    <li>NLP</li>
-                    <li>Neuro-Symbolic AI</li>
-                </ul>
+      <div class="about-content">
+        <h5>Interests</h5>
+        <ul>
+          <li>Aviation</li>
+          <li>Mathematics</li>
+          <li>Deep Learning</li>
+          <li>NLP</li>
+          <li>Neuro-Symbolic AI</li>
+        </ul>
 
-                <h5>Games</h5>
-                <ul>
-                    <li>Steep</li>
-                    <li>Diablo IV</li>
-                    <li>MSFS 24</li>
-                </ul>
-            </div>
-        </div>
+        <h5>Games</h5>
+        <ul>
+          <li>Steep</li>
+          <li>Diablo IV</li>
+          <li>MSFS 24</li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <div id="sessionid"></div>
+  <div id="sessionid"></div>
 
-    <script>
-        function showSection(sectionId) {
-            history.pushState({ section: sectionId }, "", `#${sectionId}`);
+  <script>
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const nav = document.getElementById("nav");
+    const sections = document.querySelectorAll(".section");
 
-            document.querySelector('h2').classList.add('hidden');
-            document.querySelector('nav').classList.add('hidden');
-            document.querySelector('.sub').classList.add('hidden');
+    function toggleMain(show) {
+      [title, subtitle, nav, avatar].forEach(el =>
+        el.classList.toggle("hidden", !show)
+      );
+    }
 
-            document.querySelectorAll('.section').forEach(s =>
-                s.classList.remove('active')
-            );
+    function showSection(id) {
+      history.pushState({ section: id }, "", `#${id}`);
 
-            document.getElementById(sectionId).classList.add('active');
-        }
+      toggleMain(false);
+      sections.forEach(s => s.classList.remove("active"));
 
-        function showMain() {
-            document.querySelector('h2').classList.remove('hidden');
-            document.querySelector('nav').classList.remove('hidden');
-            document.querySelector('.sub').classList.remove('hidden');
+      document.getElementById(id).classList.add("active");
+    }
 
-            document.querySelectorAll('.section').forEach(s =>
-                s.classList.remove('active')
-            );
+    function showMain() {
+      toggleMain(true);
+      sections.forEach(s => s.classList.remove("active"));
 
-            history.pushState({}, "", "/");
-        }
+      history.pushState({}, "", "/");
+    }
 
-        window.onpopstate = function (event) {
-            if (event.state && event.state.section) {
-                showSection(event.state.section);
-            } else {
-                showMain();
-            }
-        };
+    window.onpopstate = (e) => {
+      e.state?.section ? showSection(e.state.section) : showMain();
+    };
 
-        window.onload = function () {
-            const hash = location.hash.replace("#", "");
-            if (hash) showSection(hash);
+    document.querySelectorAll("[data-section]").forEach(link => {
+      link.onclick = (e) => {
+        e.preventDefault();
+        showSection(link.dataset.section);
+      };
+    });
 
-            document.getElementById('sessionid').textContent = generateSessionID();
-        };
+    function generateSessionID() {
+      const rand = Math.random().toString(36).slice(2, 10).toUpperCase();
+      const date = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+      return rand + date;
+    }
 
-        function generateSessionID() {
-            const rand = Math.random().toString(36).substr(2, 8).toUpperCase();
-            const date = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-            return rand + date;
-        }
-    </script>
+    window.onload = () => {
+      const hash = location.hash.slice(1);
+      if (hash) showSection(hash);
+
+      document.getElementById("sessionid").textContent = generateSessionID();
+    };
+  </script>
 </body>
 </html>
