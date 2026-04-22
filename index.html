@@ -13,9 +13,9 @@
     @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
     :root {
-      --bg: #1D1E22;
+      --bg: #000000;
       --text: #fff;
-      --muted: #667B96;
+      --muted: #8e8e8e;
       --light: #babdc4;
     }
 
@@ -27,12 +27,16 @@
       margin: 0;
       height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-family: "Geist", sans-serif;
+      font-family: "Geist Mono", monospace;
       background: var(--bg);
       color: var(--text);
       position: relative;
+      padding-top: 50px;
+    }
+
+    body > div {
+      text-align: center;
     }
 
     a {
@@ -45,21 +49,12 @@
     }
 
     nav a {
-      display: block;
-      margin: 5px 0;
+      display: inline;
+      margin: 0;
+    }
+
+    nav {
       text-align: center;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
     }
 
     .github {
@@ -80,142 +75,123 @@
       width: 320px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       text-align: center;
     }
 
+
     .avatar {
-      width: 100px;
-      height: 100px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
+    }
+
+    .github img:nth-child(2) {
+      filter: brightness(0) saturate(100%) invert(41%) sepia(96%) saturate(749%) hue-rotate(203deg) brightness(99%) contrast(105%);
+    }
+
+    #title {
+      display: inline-block;
+      text-align: left;
+      margin-bottom: 0;
     }
 
     .sub {
       font-size: 16px;
-      margin-top: -18px;
+      margin-top: -2px;
       margin-bottom: 8px;
-    }
-
-    .about-content {
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
       width: 100%;
+    }
+
+    .sub a {
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+      margin-top: 4px;
+    }
+
+    #bio {
       text-align: left;
-      padding-left: 8px;
+      margin-top: 12px;
+      margin-left: 60px;
+      margin-right: 60px;
+      max-width: 720px;
+      display: inline-block;
     }
 
-    .about-content h5 {
-      margin: 12px 0 6px;
-      font-weight: normal;
-      color: var(--light);
+    #bio p {
+      color: var(--text);
+      font-size: 16px;
+      margin: 8px 0;
+      line-height: 1.5;
     }
 
-    .about-content ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 12px;
-    }
-
-    .about-content li::before {
-      content: "– ";
-      color: var(--muted);
-    }
   </style>
 </head>
 
 <body>
-  <a class="github" href="https://github.com/prisect">
-    <img src="github-mark/github-mark-white.svg" width="30" height="30" />
-  </a>
+  <div class="github">
+    <a href="https://github.com/prisect">
+      <img src="github-mark/github-mark-white.svg" width="30" height="30" />
+    </a>
+    <a href="https://bsky.app/profile/prisect.bsky.social">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0085FF" viewBox="0 0 16 16" style="margin: 0 5px; vertical-align: top; margin-top: 5px;"><path d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948"/></svg>
+    </a>
+  </div>
 
-  <div class="center">
-    <img id="avatar" class="avatar" src="https://avatars.githubusercontent.com/u/78304878?v=4" />
+  <div>
+    <br>
+    <br>
+    <pre id="title">      .
+   \  :  /
+    ' _ '
+-= ( (_) ) =-
+    .   .
+   /  :  \
+      '</pre>
 
-    <h2 id="title">dima / prisect</h2>
-    <span class="sub" id="subtitle">Locked in</span>
+    <span class="sub" id="subtitle">    <a href="https://github.com/prisect">
+      <img id="avatar" class="avatar" src="https://avatars.githubusercontent.com/u/78304878?v=4" />
+    </a>
+prisect.d</span>
 
     <nav id="nav">
-      <a href="https://src.eco/">the source</a>
-      <a href="https://nullcel.com/">nullcel</a>
-      <a href="https://vastdisk.com/">vastdisk</a>
-      <a href="https://up!/">up!</a>
-      <a href="#about" data-section="about">about</a>
+      <a href="https://src.eco/">the source</a> · <a href="https://nullcel.com/">nullcel</a> · <a href="https://vastdisk.com/">vastdisk</a> · <a href="https://up!">up!</a>
     </nav>
+        <div id="bio">
+      <p>hi i am prisect, low level programmer and aviation nerd, and this space is for people who actually wanna know how a wing stays up and what the cpu does when nobody's watching. my hands are in rust, c, assembly, plus full stack web because i built vastdisk and dimanet from the socket up. under that, i do neural networks and neuro symbolic ai which is basically teaching symbols to bleed inside a gradient and made it work even when it looks like nonsense. i also breathe psychology attachment styles, defense mechanisms, why your brain lies to you daily. let me be clear i fucking hate performative coders, framework clowns, and anyone who thinks ai is just an api call. if you believe you're chosen by some higher power to lead or rule or preach at me, first fuck you, second go read a linker script. and if you idolize some musician or politician or youtube guru, take a long hard look at yourself before your hero complex wrecks everything. this said i'm not an angry pessimist. i believe in kindness, in teaching strangers for free, in telling the truth even when it stings. <br><br>no idols, no masters, no slaves. no israelis. just people who actually build shit and understand it. enjoy the final approach.
 
-    <!-- ABOUT -->
-    <div id="about" class="section">
-      <h2>about</h2>
-      <hr width="100" />
-
-      <div class="about-content">
-        <h5>Interests</h5>
-        <ul>
-          <li>Aviation</li>
-          <li>Mathematics</li>
-          <li>Deep Learning</li>
-          <li>NLP</li>
-          <li>Neuro-Symbolic AI</li>
-        </ul>
-
-        <h5>Games</h5>
-        <ul>
-          <li>Steep</li>
-          <li>Diablo IV</li>
-          <li>MSFS 24</li>
-        </ul>
-      </div>
+</p>
+<br>
     </div>
+
   </div>
 
   <div id="sessionid"></div>
 
   <script>
-    const title = document.getElementById("title");
-    const subtitle = document.getElementById("subtitle");
-    const nav = document.getElementById("nav");
-    const sections = document.querySelectorAll(".section");
-
-    function toggleMain(show) {
-      [title, subtitle, nav, avatar].forEach(el =>
-        el.classList.toggle("hidden", !show)
-      );
-    }
-
-    function showSection(id) {
-      history.pushState({ section: id }, "", `#${id}`);
-
-      toggleMain(false);
-      sections.forEach(s => s.classList.remove("active"));
-
-      document.getElementById(id).classList.add("active");
-    }
-
-    function showMain() {
-      toggleMain(true);
-      sections.forEach(s => s.classList.remove("active"));
-
-      history.pushState({}, "", "/");
-    }
-
-    window.onpopstate = (e) => {
-      e.state?.section ? showSection(e.state.section) : showMain();
-    };
-
-    document.querySelectorAll("[data-section]").forEach(link => {
-      link.onclick = (e) => {
-        e.preventDefault();
-        showSection(link.dataset.section);
-      };
-    });
-
     function generateSessionID() {
-      const rand = Math.random().toString(36).slice(2, 10).toUpperCase();
-      const date = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-      return rand + date;
+      const n = new Date();
+      const e = v => v.toString(36).toUpperCase();
+      const ts = e(Math.floor(n.getTime() / 1000));
+      const tz = e(n.getTimezoneOffset() + 780);
+      const scr = e(Math.round(screen.width / 10) * 500 + Math.round(screen.height / 10));
+      const dpr = Math.round(devicePixelRatio * 10);
+      const cd = screen.colorDepth / 8;
+      const cn = navigator.connection ? Math.round(navigator.connection.downlink * 10) : 0;
+      const misc = e(cd * 1000 + dpr * 10 + cn);
+      const ref = document.referrer ? e(Math.min(document.referrer.length, 46655)) : '0';
+      const rand = e(Math.floor(Math.random() * 46656));
+      const plat = (navigator.platform || '').slice(0, 2).toUpperCase();
+      const lng = (navigator.language || '').replace(/[^a-z]/gi, '').slice(0, 2).toUpperCase();
+      return ts + tz + scr + misc + ref + plat + lng + rand;
     }
 
     window.onload = () => {
-      const hash = location.hash.slice(1);
-      if (hash) showSection(hash);
-
       document.getElementById("sessionid").textContent = generateSessionID();
     };
   </script>

@@ -1,0 +1,62 @@
+SESSION ID DECODING REFERENCE
+=============================
+
+The session ID is a compact base-36 encoded string that packs viewer info.
+All numeric parts are base-36 (0-9, A-Z). Decode with parseInt(part, 36).
+
+FORMAT: ts + tz + scr + misc + ref + plat + lng + rand
+
+
+FIELDS
+------
+
+ts    - Unix timestamp in seconds
+        Decode: new Date(parseInt(ts, 36) * 1000)
+        Gives full date and time of the page view.
+
+tz    - Timezone offset in minutes from UTC, shifted by +780
+        Decode: parseInt(tz, 36) - 780
+        Negative = ahead of UTC, Positive = behind UTC
+        e.g. -60 = UTC+1 (CET), -480 = UTC+8
+
+scr   - Screen resolution packed as one number
+        Decode: val = parseInt(scr, 36)
+        width = Math.floor(val / 500) * 10
+        height = (val % 500) * 10
+        e.g. 1920x1080 -> 192*500 + 108 = 96108 -> base36 "2B38"
+
+misc  - Color depth, pixel ratio, and connection speed packed together
+        Decode: val = parseInt(misc, 36)
+        colorDepth = Math.floor(val / 1000) * 8   (bits per pixel)
+        pixelRatio = Math.floor((val % 1000) / 10) / 10
+        connectionDownlink = (val % 10) / 10        (Mbps, 0 if unknown)
+        e.g. 24-bit, 1.5x DPR, 5.0 Mbps -> 3*1000 + 15*10 + 50 = 3200 -> base36 "2G8"
+
+ref   - Length of the referrer URL (0 if no referrer)
+        Decode: parseInt(ref, 36)
+        Gives the character count of document.referrer
+
+plat  - First 2 letters of navigator.platform
+        e.g. "WI" = Win32, "LI" = Linux, "MA" = MacIntel
+
+lng   - First 2 letters of navigator.language (alpha only)
+        e.g. "EN" = en-US, "DE" = de-DE, "FR" = fr-FR
+
+rand  - Random number 0-46655 (ZZ in base36)
+        Unique per session to distinguish concurrent views
+
+
+EXAMPLE
+-------
+
+Input:  1A8XOHW2Y6BK2E0A0LIEN2C9
+
+Breakdown (variable length, order is fixed):
+  ts   = 1A8XOH    -> 1777980000 -> 2026-04-22 16:00:00 UTC
+  tz   = W2        -> -60        -> UTC+1
+  scr  = Y6BK      -> 96108      -> 1920x1080
+  misc = 2E0       -> 3200       -> 24-bit, 1.5x DPR, 5.0 Mbps
+  ref  = A0        -> 360        -> referrer is 360 chars long
+  plat = LI        -> Linux
+  lng  = EN        -> English
+  rand = 2C9       -> random session tag
